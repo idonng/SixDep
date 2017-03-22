@@ -1,0 +1,28 @@
+package com.zbt.six.service;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.zbt.six.pojo.OptionsRegistrInfo;
+
+public interface OptionsRegistrInfoService {
+	
+	
+	//public List<OptionsRegistrInfo> selectByDateAndUserId(String realtime,String name,Long optionsid);
+	
+	public List<Map<String, Object>> selecOptionsByMonth(String begintime,
+			String endtime, Long optionsid, Long foruserid);
+	public List<Map<String, Object>> selecOptionsScoresByDay(String begintime,
+			String endtime, Long deptypeid, Long foruserid);
+	public List<Map<String, Object>> selecOptionsScoreByOption(String begintime,
+			String endtime, Long deptypeid, Long foruserid);
+	public List<Map<String, Object>> selecOptionsScoresByOption(String begintime,
+			String endtime, Long deptypeid, Long foruserid);
+	public List<Map<String, Object>> selecOptionsTotleScores(String begintime,
+			String endtime, Long deptypeid, Long foruserid);
+	public int insertOrUpdateOptions(Long foruserid,String realTime,Long optionsid, int num,HttpServletRequest req);
+}

@@ -1,0 +1,85 @@
+//初始化，增加样式，获取选中值
+var options = null;
+$(function() {
+	$
+			.ajax({
+				type : "POST",
+				url : "../../MobileOptionsController/selectAllOptionsByUser.do",
+				success : function(data) {
+					$("#options").empty();
+					var options = "";
+					var json = eval("(" + data + ")");
+					for ( var i = 0; i < json.list.length; i++) {
+						if (json.list[i].frequency == 1) {
+							options += "<table class='option table table-bordered data-table'><tr>";
+							options += "<td align='left' style='width:95%'> "
+									+ json.list[i].name + " - " + json.list[i].score
+									+ json.list[i].unit + "</td>";
+							if (json.list[i].number == "1") {
+								options += "<td align='right' style='width:5%'><input type='checkbox' class='optionsinput' value="
+										+ json.list[i].id + " checked />";
+							} else {
+								options += "<td align='right' style='width:5%'><input type='checkbox' class='optionsinput' value="
+										+ json.list[i].id + " />";
+							}
+							options += "</tr></table>";
+						} else {
+								options += "<table class='option table table-bordered data-table'><tr>";
+								options += "<td align='left' style='width:80%;'> "
+										+ json.list[i].name
+										+ " - "
+										+ json.list[i].score
+										+ json.list[i].unit + "</td>";
+								options += "<td align='right' style='width:10% '><input type='text' class='optionstext' style='margin:2%' id="
+										+ json.list[i].id
+										+ " value="
+										+ json.list[i].number
+										+ " placeholder='填报数量' />";
+								options += "</td></tr></table>";
+						}
+					}
+					$("#options").append(options);
+				}
+			});
+});
+// 积分填报
+function add() {
+	var optionsIds="";
+	var nums="";
+	var foruserid = $("#userInfos").val();
+		 var optionsinputs=document.getElementsByClassName("optionsinput"); 
+    	for(var i=0;i<optionsinputs.length;i++){
+         if(optionsinputs[i].checked){
+         	optionsIds+=optionsinputs[i].value+"##";
+         	nums+="1"+"##";
+       	  }
+       	  else{
+       	  	optionsIds+=optionsinputs[i].value+"##";
+         	nums+="0"+"##";
+       	  }
+    	}    
+    	var optionstexts=document.getElementsByClassName("optionstext"); 
+    	for(var i=0;i<optionstexts.length;i++){
+         	optionsIds+=optionstexts[i].id+"##";
+         	nums+=optionstexts[i].value+"##";
+    	}  
+    	var urlPath = "../insertOrUpdateOptions.do";
+		$.ajax({
+			type : "POST",
+			url : urlPath,
+			data : {
+				'foruserid' : foruserid,
+				'optionsIds' : optionsIds,
+				'nums' : nums 
+			},
+			dataType : "json",
+			success : function(data) { 
+				if (data == '1') {
+					alert("提交成功");
+					location.reload();
+				} else {
+					alert("提交失败");
+				}
+			}
+		});
+}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zbt.six.dao.OptionsRegistrImgPathMapper">
+	<resultMap id="BaseResultMap" type="com.zbt.six.pojo.OptionsRegistrImgPath">
+		<id column="Id" property="id" jdbcType="BIGINT" />
+		<result column="ForUserId" property="foruserid" jdbcType="BIGINT" />
+		<result column="RealTime" property="realtime" jdbcType="TIMESTAMP" />
+		<result column="ImgPath" property="imgpath" jdbcType="VARCHAR" />
+		<result column="Remark1" property="remark1" jdbcType="VARCHAR" />
+		<result column="Remark2" property="remark2" jdbcType="VARCHAR" />
+		<result column="AddUserId" property="adduserid" jdbcType="BIGINT" />
+		<result column="AddTime" property="addtime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, ForUserId, RealTime, ImgPath, Remark1, Remark2, AddUserId, AddTime
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsRegistrImgPath
+		where Id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from OptionsRegistrImgPath
+		where Id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.zbt.six.pojo.OptionsRegistrImgPath">
+		insert into OptionsRegistrImgPath (ForUserId, RealTime,
+		ImgPath, Remark1, Remark2,
+		AddUserId, AddTime)
+		values (#{foruserid,jdbcType=BIGINT}, #{realtime,jdbcType=TIMESTAMP},
+		#{imgpath,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR},
+		#{remark2,jdbcType=VARCHAR},
+		#{adduserid,jdbcType=BIGINT}, #{addtime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.zbt.six.pojo.OptionsRegistrImgPath">
+		insert into OptionsRegistrImgPath
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="foruserid != null">
+				ForUserId,
+			</if>
+			<if test="realtime != null">
+				RealTime,
+			</if>
+			<if test="imgpath != null">
+				ImgPath,
+			</if>
+			<if test="remark1 != null">
+				Remark1,
+			</if>
+			<if test="remark2 != null">
+				Remark2,
+			</if>
+			<if test="adduserid != null">
+				AddUserId,
+			</if>
+			<if test="addtime != null">
+				AddTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="foruserid != null">
+				#{foruserid,jdbcType=BIGINT},
+			</if>
+			<if test="realtime != null">
+				#{realtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="imgpath != null">
+				#{imgpath,jdbcType=VARCHAR},
+			</if>
+			<if test="remark1 != null">
+				#{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				#{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="adduserid != null">
+				#{adduserid,jdbcType=BIGINT},
+			</if>
+			<if test="addtime != null">
+				#{addtime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.zbt.six.pojo.OptionsRegistrImgPath">
+		update OptionsRegistrImgPath
+		<set>
+			<if test="foruserid != null">
+				ForUserId = #{foruserid,jdbcType=BIGINT},
+			</if>
+			<if test="realtime != null">
+				RealTime = #{realtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="imgpath != null">
+				ImgPath = #{imgpath,jdbcType=VARCHAR},
+			</if>
+			<if test="remark1 != null">
+				Remark1 = #{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				Remark2 = #{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="adduserid != null">
+				AddUserId = #{adduserid,jdbcType=BIGINT},
+			</if>
+			<if test="addtime != null">
+				AddTime = #{addtime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.zbt.six.pojo.OptionsRegistrImgPath">
+		update OptionsRegistrImgPath
+		set ForUserId = #{foruserid,jdbcType=BIGINT},
+		RealTime = #{realtime,jdbcType=TIMESTAMP},
+		ImgPath = #{imgpath,jdbcType=VARCHAR},
+		Remark1 = #{remark1,jdbcType=VARCHAR},
+		Remark2 = #{remark2,jdbcType=VARCHAR},
+		AddUserId = #{adduserid,jdbcType=BIGINT},
+		AddTime = #{addtime,jdbcType=TIMESTAMP}
+		where Id = #{id,jdbcType=BIGINT}
+	</update>
+	<!-- 通过useid和realTime查询图片List -->
+	<select id="selectImageListByUserIdAndRealTime" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsRegistrImgPath
+		where
+		ForUserId= #{forUserId,jdbcType=BIGINT}
+		And
+		RealTime = #{realTime}
+	</select>
+</mapper>

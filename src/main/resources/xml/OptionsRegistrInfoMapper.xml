@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zbt.six.dao.OptionsRegistrInfoMapper">
+	<resultMap id="BaseResultMap" type="com.zbt.six.pojo.OptionsRegistrInfo">
+		<id column="Id" property="id" jdbcType="BIGINT" />
+		<result column="ForUserId" property="foruserid" jdbcType="BIGINT" />
+		<result column="RealTime" property="realtime" jdbcType="TIMESTAMP" />
+		<result column="OptionsId" property="optionsid" jdbcType="BIGINT" />
+		<result column="Num" property="num" jdbcType="INTEGER" />
+		<result column="Remark1" property="remark1" jdbcType="VARCHAR" />
+		<result column="Remark2" property="remark2" jdbcType="VARCHAR" />
+		<result column="UpdateUserId" property="updateuserid" jdbcType="BIGINT" />
+		<result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+		<result column="AddUserId" property="adduserid" jdbcType="BIGINT" />
+		<result column="AddTime" property="addtime" jdbcType="TIMESTAMP" />
+		<result column="IsEnable" property="isenable" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, ForUserId, RealTime, OptionsId, Num, Remark1, Remark2,
+		UpdateUserId,
+		UpdateTime,
+		AddUserId, AddTime, IsEnable
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsRegistrInfo
+		where Id = #{id,jdbcType=BIGINT}  
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		OptionsRegistrInfo
+		where Id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		insert into OptionsRegistrInfo
+		(ForUserId, RealTime,
+		OptionsId, Num, Remark1,
+		Remark2,
+		UpdateUserId,
+		UpdateTime,
+		AddUserId, AddTime, IsEnable
+		)
+		values(
+		#{foruserid,jdbcType=BIGINT},
+		#{realtime,jdbcType=TIMESTAMP},
+		#{optionsid,jdbcType=BIGINT},
+		#{num,jdbcType=INTEGER},
+		#{remark1,jdbcType=VARCHAR},
+		#{remark2,jdbcType=VARCHAR},
+		#{updateuserid,jdbcType=BIGINT},
+		#{updatetime,jdbcType=TIMESTAMP},
+		#{adduserid,jdbcType=BIGINT},
+		#{addtime,jdbcType=TIMESTAMP},
+		#{isenable,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		insert into OptionsRegistrInfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="foruserid != null">
+				ForUserId,
+			</if>
+			<if test="realtime != null">
+				RealTime,
+			</if>
+			<if test="optionsid != null">
+				OptionsId,
+			</if>
+			<if test="num != null">
+				Num,
+			</if>
+			<if test="remark1 != null">
+				Remark1,
+			</if>
+			<if test="remark2 != null">
+				Remark2,
+			</if>
+			<if test="updateuserid != null">
+				UpdateUserId,
+			</if>
+			<if test="updatetime != null">
+				UpdateTime,
+			</if>
+			<if test="adduserid != null">
+				AddUserId,
+			</if>
+			<if test="addtime != null">
+				AddTime,
+			</if>
+			<if test="isenable != null">
+				IsEnable,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="foruserid != null">
+				#{foruserid,jdbcType=BIGINT},
+			</if>
+			<if test="realtime != null">
+				#{realtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="optionsid != null">
+				#{optionsid,jdbcType=BIGINT},
+			</if>
+			<if test="num != null">
+				#{num,jdbcType=INTEGER},
+			</if>
+			<if test="remark1 != null">
+				#{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				#{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="updateuserid != null">
+				#{updateuserid,jdbcType=BIGINT},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="adduserid != null">
+				#{adduserid,jdbcType=BIGINT},
+			</if>
+			<if test="addtime != null">
+				#{addtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isenable != null">
+				#{isenable,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		update OptionsRegistrInfo
+		<set>
+			<if test="foruserid != null">
+				ForUserId = #{foruserid,jdbcType=BIGINT},
+			</if>
+			<if test="realtime != null">
+				RealTime = #{realtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="optionsid != null">
+				OptionsId = #{optionsid,jdbcType=BIGINT},
+			</if>
+			<if test="num != null">
+				Num = #{num,jdbcType=INTEGER},
+			</if>
+			<if test="remark1 != null">
+				Remark1 = #{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				Remark2 = #{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="updateuserid != null">
+				UpdateUserId = #{updateuserid,jdbcType=BIGINT},
+			</if>
+			<if test="updatetime != null">
+				UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="adduserid != null">
+				AddUserId = #{adduserid,jdbcType=BIGINT},
+			</if>
+			<if test="addtime != null">
+				AddTime = #{addtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isenable != null">
+				IsEnable = #{isenable,jdbcType=INTEGER},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		update
+		OptionsRegistrInfo
+		set ForUserId = #{foruserid,jdbcType=BIGINT},
+		RealTime = #{realtime,jdbcType=TIMESTAMP},
+		OptionsId =
+		#{optionsid,jdbcType=BIGINT},
+		Num = #{num,jdbcType=INTEGER},
+		Remark1 =
+		#{remark1,jdbcType=VARCHAR},
+		Remark2 = #{remark2,jdbcType=VARCHAR},
+		UpdateUserId = #{updateuserid,jdbcType=BIGINT},
+		UpdateTime =
+		#{updatetime,jdbcType=TIMESTAMP},
+		AddUserId =
+		#{adduserid,jdbcType=BIGINT},
+		AddTime = #{addtime,jdbcType=TIMESTAMP},
+		IsEnable = #{isenable,jdbcType=INTEGER}
+		where Id =
+		#{id,jdbcType=BIGINT}
+	</update>
+	<!-- 查询填报信息 -->
+	<select id="selectOptionsRegistrByUIdAndOId" resultMap="BaseResultMap"
+		parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsRegistrInfo
+		where ForUserId =
+		#{foruserid,jdbcType=BIGINT}
+		And OptionsId =
+		#{optionsid,jdbcType=BIGINT}
+		And CONVERT(VARCHAR(10),
+		RealTime, 120) = #{realtime,jdbcType=TIMESTAMP}
+	</select>
+
+
+
+	<select id="selecOptionsByMonth" resultType="java.util.Map">
+		SELECT B.dt AS date
+		,
+		A.num AS num
+		FROM ( SELECT CONVERT(VARCHAR(10),
+		RealTime, 120) AS date
+		,
+		Num as num
+		FROM [dbo].[OptionsRegistrInfo]
+		WHERE RealTime >=
+		#{begintime} and RealTime &lt; #{endtime}
+		AND
+		IsEnable = 1 AND ForUserId
+		= #{foruserid}
+		and OptionsId=#{optionsid,jdbcType=BIGINT}
+		) A
+		RIGHT JOIN
+		( SELECT CONVERT(VARCHAR(10), DATEADD(DAY,
+		number,#{begintime}),
+		120) AS
+		dt
+		FROM master.dbo.spt_values
+		WHERE type =
+		'P' AND number &lt;
+		DATEDIFF(DAY, #{begintime} ,#{endtime})
+		) B ON
+		A.date = B.dt
+		ORDER BY
+		B.dt
+	</select>
+
+	<select id="selecOptionsScoresByDay" resultType="java.util.Map">
+		SELECT D.dt AS
+		date ,
+		sum(C.sumNum) AS sumNums FROM
+		(SELECT A.num*B.Score AS sumNum
+		,A.date date from
+		(SELECT Num,OptionsId,CONVERT(VARCHAR(10), RealTime,
+		120) AS date
+		FROM [dbo].[OptionsRegistrInfo]
+		WHERE RealTime >=
+		#{begintime} and RealTime &lt; #{endtime}
+		AND IsEnable = 1 AND
+		ForUserId =#{foruserid}
+		)A
+		INNER JOIN (
+		select id,Score
+		from OptionsInfo
+		where IsEnable=1 and DepTypeId=#{deptypeid})B
+		ON B.ID=A.OptionsId) C
+		RIGHT JOIN ( SELECT CONVERT(VARCHAR(10), DATEADD(DAY,
+		number,#{begintime}),
+		120) AS dt
+		FROM master.dbo.spt_values
+		WHERE type =
+		'P' AND number &lt; DATEDIFF(DAY, #{begintime} ,#{endtime})
+		) D ON
+		C.date =D.dt
+		GROUP BY D.dt ORDER BY D.dt ;
+	</select>
+	<select id="selecOptionsScoresByOption" resultType="java.util.Map">
+		select
+		B.oiid,A.sumNum*B.Score sumNums from (
+		(SELECT sum(Num) AS
+		sumNum,OptionsId
+		FROM [dbo].[OptionsRegistrInfo]
+		WHERE RealTime >=
+		#{begintime} and RealTime &lt; #{endtime}
+		AND ForUserId
+		= #{foruserid}
+		GROUP BY OptionsId)A
+		RIGHT JOIN
+		(select id AS
+		oiid,Score,OptionsCode
+		from OptionsInfo where IsEnable=1 and
+		DepTypeId=#{deptypeid}) B
+		on
+		A.OptionsId=B.oiid
+		)ORDER BY B.OptionsCode
+	</select>
+	<select id="selecOptionsScoreByOption" resultType="java.util.Map">
+		select
+		B.oiid,A.sumNum sumNums from (
+		(SELECT sum(Num) AS
+		sumNum,OptionsId
+		FROM
+		[dbo].[OptionsRegistrInfo]
+		WHERE RealTime >=
+		#{begintime} and RealTime
+		&lt; #{endtime}
+		AND ForUserId
+		= #{foruserid}
+		GROUP BY
+		OptionsId)A
+		RIGHT JOIN
+		(select id AS oiid,Score,OptionsCode
+		from
+		OptionsInfo where IsEnable=1 and DepTypeId=#{deptypeid}) B
+		on
+		A.OptionsId=B.oiid
+		)ORDER BY B.OptionsCode
+	</select>
+	<select id="selecOptionsTotleScores" resultType="java.util.Map">
+		select
+		sum(A.sumNum*B.Score) sumNums from
+		(SELECT sum(Num) AS sumNum,OptionsId
+		FROM [dbo].[OptionsRegistrInfo]
+		WHERE RealTime >= #{begintime} and
+		RealTime &lt; #{endtime}
+		  AND ForUserId = #{foruserid}
+		GROUP BY OptionsId)A
+		RIGHT JOIN
+		(select id AS oiid,Score from
+		OptionsInfo where IsEnable=1 and
+		DepTypeId=#{deptypeid}) B
+		on
+		A.OptionsId=B.oiid;
+	</select>
+	<update id="updateByForUserIdRealTimeOptionsId" parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		update OptionsRegistrInfo
+		<set>
+			<if test="num != null">
+				Num = #{num,jdbcType=INTEGER},
+			</if>
+			<if test="remark1 != null">
+				Remark1 = #{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				Remark2 = #{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="updateuserid != null">
+				UpdateUserId = #{updateuserid,jdbcType=BIGINT},
+			</if>
+			<if test="updatetime != null">
+				UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="adduserid != null">
+				AddUserId = #{adduserid,jdbcType=BIGINT},
+			</if>
+			<if test="addtime != null">
+				AddTime = #{addtime,jdbcType=TIMESTAMP},
+			</if>
+
+		</set>
+		where ForUserId = #{foruserid,jdbcType=BIGINT}
+		and RealTime = #{realtime,jdbcType=TIMESTAMP}
+		and OptionsId = #{optionsid,jdbcType=BIGINT}
+	</update>
+	
+	<select id="selectByForUserIdRealTimeOptionsId" resultMap="BaseResultMap"
+		parameterType="com.zbt.six.pojo.OptionsRegistrInfo">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsRegistrInfo
+		where ForUserId = #{foruserid}
+		and RealTime = #{realtime}
+		and OptionsId = #{optionsid}
+	</select>
+</mapper>

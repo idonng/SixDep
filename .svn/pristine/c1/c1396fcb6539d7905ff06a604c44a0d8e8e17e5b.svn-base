@@ -1,0 +1,105 @@
+body{
+	font-family: "ºÚÌå",helvetica;
+	background: url(../images/limages/dl.png); 
+    background-size:100% 100%;
+}
+span{
+    display: block;
+    padding:5% 0 20% 0;
+    position: relative;
+    text-align: center;
+    font-weight:bold;
+    height:20%;
+    line-height: 130px;
+    color:#fff;
+    font-size: 25px;
+}
+
+ul li{
+	margin-left:-10%;
+    text-align:center;
+    position: relative;
+}
+.username,.yzm, .pwd, .pwd2{
+    width:70%;
+    height:35px;
+    border-radius:4px;
+    background:#fff;
+    filter:alpha(opacity:70);
+    opacity: 0.3;
+    list-style: none;
+    margin:5px 0;
+    padding-left:13%;
+    border:1px solid #ccc;
+}
+.un,.yz, .pw, .pw2{
+    position: absolute;
+    margin-top:2%;
+}
+.submit{
+    width:65%;
+    height:35px;
+    background:#f34541;
+    border:1px solid #f34541;
+    text-align: center;
+    margin:5% 0 0 20%;
+    color:#fff;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#send{
+    position:absolute;
+    margin:1.5% 0 0 -87px;
+    width:87px;
+    height:35px;
+    border-radius: 3px;
+    border:1px solid #79b235;
+    background:#79b235;
+    font-family:  "Microsoft YaHei";
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

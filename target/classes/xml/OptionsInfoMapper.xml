@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zbt.six.dao.OptionsInfoMapper">
+	<resultMap id="BaseResultMap" type="com.zbt.six.pojo.OptionsInfo">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="OptionsCode" property="optionscode" jdbcType="INTEGER" />
+		<result column="Name" property="name" jdbcType="VARCHAR" />
+		<result column="Score" property="score" jdbcType="INTEGER" />
+		<result column="Unit" property="unit" jdbcType="VARCHAR" />
+		<result column="Frequency" property="frequency" jdbcType="INTEGER" />
+		<result column="DepTypeId" property="deptypeid" jdbcType="BIGINT" />
+		<result column="Remark1" property="remark1" jdbcType="VARCHAR" />
+		<result column="Remark2" property="remark2" jdbcType="VARCHAR" />
+		<result column="AddUser" property="adduser" jdbcType="VARCHAR" />
+		<result column="AddDate" property="adddate" jdbcType="TIMESTAMP" />
+		<result column="IsEnable" property="isenable" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, OptionsCode, Name, Score, Unit, Frequency, DepTypeId,
+		Remark1,
+		Remark2, AddUser,
+		AddDate, IsEnable
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsInfo
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		OptionsInfo
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.zbt.six.pojo.OptionsInfo">
+		insert into OptionsInfo (id,
+		OptionsCode, Name,
+		Score, Unit, Frequency,
+		DepTypeId, Remark1, Remark2,
+		AddUser, AddDate, IsEnable
+		)
+		values (#{id,jdbcType=BIGINT},
+		#{optionscode,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR},
+		#{score,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR},
+		#{frequency,jdbcType=INTEGER},
+		#{deptypeid,jdbcType=BIGINT},
+		#{remark1,jdbcType=VARCHAR},
+		#{remark2,jdbcType=VARCHAR},
+		#{adduser,jdbcType=VARCHAR}, #{adddate,jdbcType=TIMESTAMP},
+		#{isenable,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.zbt.six.pojo.OptionsInfo">
+		insert into OptionsInfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="optionscode != null">
+				OptionsCode,
+			</if>
+			<if test="name != null">
+				Name,
+			</if>
+			<if test="score != null">
+				Score,
+			</if>
+			<if test="unit != null">
+				Unit,
+			</if>
+			<if test="frequency != null">
+				Frequency,
+			</if>
+			<if test="deptypeid != null">
+				DepTypeId,
+			</if>
+			<if test="remark1 != null">
+				Remark1,
+			</if>
+			<if test="remark2 != null">
+				Remark2,
+			</if>
+			<if test="adduser != null">
+				AddUser,
+			</if>
+			<if test="adddate != null">
+				AddDate,
+			</if>
+			<if test="isenable != null">
+				IsEnable,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="optionscode != null">
+				#{optionscode,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="score != null">
+				#{score,jdbcType=INTEGER},
+			</if>
+			<if test="unit != null">
+				#{unit,jdbcType=VARCHAR},
+			</if>
+			<if test="frequency != null">
+				#{frequency,jdbcType=INTEGER},
+			</if>
+			<if test="deptypeid != null">
+				#{deptypeid,jdbcType=BIGINT},
+			</if>
+			<if test="remark1 != null">
+				#{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				#{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="adduser != null">
+				#{adduser,jdbcType=VARCHAR},
+			</if>
+			<if test="adddate != null">
+				#{adddate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isenable != null">
+				#{isenable,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.zbt.six.pojo.OptionsInfo">
+		update OptionsInfo
+		<set>
+			<if test="optionscode != null">
+				OptionsCode = #{optionscode,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				Name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="score != null">
+				Score = #{score,jdbcType=INTEGER},
+			</if>
+			<if test="unit != null">
+				Unit = #{unit,jdbcType=VARCHAR},
+			</if>
+			<if test="frequency != null">
+				Frequency = #{frequency,jdbcType=INTEGER},
+			</if>
+			<if test="deptypeid != null">
+				DepTypeId = #{deptypeid,jdbcType=BIGINT},
+			</if>
+			<if test="remark1 != null">
+				Remark1 = #{remark1,jdbcType=VARCHAR},
+			</if>
+			<if test="remark2 != null">
+				Remark2 = #{remark2,jdbcType=VARCHAR},
+			</if>
+			<if test="adduser != null">
+				AddUser = #{adduser,jdbcType=VARCHAR},
+			</if>
+			<if test="adddate != null">
+				AddDate = #{adddate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isenable != null">
+				IsEnable = #{isenable,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.zbt.six.pojo.OptionsInfo">
+		update OptionsInfo
+		set OptionsCode = #{optionscode,jdbcType=INTEGER},
+		Name =
+		#{name,jdbcType=VARCHAR},
+		Score = #{score,jdbcType=INTEGER},
+		Unit =
+		#{unit,jdbcType=VARCHAR},
+		Frequency = #{frequency,jdbcType=INTEGER},
+		DepTypeId = #{deptypeid,jdbcType=BIGINT},
+		Remark1 =
+		#{remark1,jdbcType=VARCHAR},
+		Remark2 = #{remark2,jdbcType=VARCHAR},
+		AddUser = #{adduser,jdbcType=VARCHAR},
+		AddDate =
+		#{adddate,jdbcType=TIMESTAMP},
+		IsEnable = #{isenable,jdbcType=INTEGER}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<!-- 通过个人信息和当前时间确定手机端展示所有积分项 -->
+	<select id="selectAllOptionsByUser" resultMap="BaseResultMap"
+		parameterType="com.zbt.six.pojo.OptionsInfo">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsInfo
+		where
+		<if test="frequency == 1">
+			Frequency = #{frequency,jdbcType=INTEGER} And
+		</if>
+		<if test="deptypeid != 3">
+			DepTypeId = #{deptypeid,jdbcType=BIGINT} And
+		</if>
+		IsEnable = 1 order by [OptionsCode] asc
+	</select>
+
+	<!-- 通过个人信息id和当前时间确定个人已填写积分项 -->
+	<select id="selectCheckOptionsByUser" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from OptionsInfo
+		where
+		[id] in ( select [OptionsId] from
+		OptionsRegistrInfo where
+		[ForUserId] = #{userid,jdbcType=BIGINT}
+		And
+		CONVERT(VARCHAR(10), RealTime, 120) = #{realTime}
+		And Num &lt;&gt; 0
+		) And
+		<if test="frequency == 1">
+			Frequency = #{frequency,jdbcType=INTEGER} And
+		</if>
+		<if test="deptypeid != 3">
+			DepTypeId = #{deptypeid,jdbcType=BIGINT} And
+		</if>
+		IsEnable = 1
+	</select>
+	
+	<select id="selectByDepTypeId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OptionsInfo
+    where IsEnable=1 and DepTypeId=#{deptypeid,jdbcType=BIGINT} order by OptionsCode
+  </select>
+</mapper>

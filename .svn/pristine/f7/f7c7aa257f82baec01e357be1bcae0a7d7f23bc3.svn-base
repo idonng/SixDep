@@ -1,0 +1,149 @@
+package com.zbt.six.pojo;
+
+import java.util.Date;
+
+public class OptionsInfo {
+    private Long id;
+
+    private Integer optionscode;
+
+    private String name;
+
+    private Integer score;
+
+    private String unit;
+
+    private Integer frequency;
+
+    private Long deptypeid;
+
+    private String remark1;
+
+    private String remark2;
+
+    private String adduser;
+
+    private Date adddate;
+
+    private Integer isenable;
+    
+    private boolean check; //是否为已填报信息--数据库无此字段
+    
+    private Integer number = 0; //填报数量--数据库无此字段
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getOptionscode() {
+        return optionscode;
+    }
+
+    public void setOptionscode(Integer optionscode) {
+        this.optionscode = optionscode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit == null ? null : unit.trim();
+    }
+
+    public Integer getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(Integer frequency) {
+        this.frequency = frequency;
+    }
+
+    public Long getDeptypeid() {
+        return deptypeid;
+    }
+
+    public void setDeptypeid(Long deptypeid) {
+        this.deptypeid = deptypeid;
+    }
+
+    public String getRemark1() {
+        return remark1;
+    }
+
+    public void setRemark1(String remark1) {
+        this.remark1 = remark1 == null ? null : remark1.trim();
+    }
+
+    public String getRemark2() {
+        return remark2;
+    }
+
+    public void setRemark2(String remark2) {
+        this.remark2 = remark2 == null ? null : remark2.trim();
+    }
+
+    public String getAdduser() {
+        return adduser;
+    }
+
+    public void setAdduser(String adduser) {
+        this.adduser = adduser == null ? null : adduser.trim();
+    }
+
+    public Date getAdddate() {
+        return adddate;
+    }
+
+    public void setAdddate(Date adddate) {
+        this.adddate = adddate;
+    }
+
+    public Integer getIsenable() {
+        return isenable;
+    }
+
+    public void setIsenable(Integer isenable) {
+        this.isenable = isenable;
+    }
+
+	public boolean isCheck() {
+		return check;
+	}
+
+	public void setCheck(boolean check) {
+		if(check){
+			this.check = check;
+		}else{
+			this.check = false;
+		}
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+}

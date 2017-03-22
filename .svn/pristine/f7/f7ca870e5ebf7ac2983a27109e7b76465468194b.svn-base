@@ -1,0 +1,137 @@
+//初始化，增加样式，获取选中值
+var options = null;
+$(function() {
+	$
+			.ajax({
+				type : "POST",
+				url : "../../MobileOptionsController/selectAllOptionsByUser.do",
+				success : function(data) {
+					msg = eval("(" + data + ")");
+					if (msg.success) {
+						for ( var i = 0; i < msg.list.length; i++) {
+							options += '<table class="option"><tr><td style="width:5%;">';
+							if (msg.list[i].check) {
+								options += '<input type="checkbox" name="checkbox" value='
+										+ msg.list[i].id + ' checked />';
+							} else {
+								options += '<input type="checkbox" name="checkbox" value='
+										+ msg.list[i].id + ' /></td>';
+							}
+							options += '<td align="left"> ' + msg.list[i].name
+									+ ' - ' + msg.list[i].score
+									+ msg.list[i].unit;
+							if (msg.list[i].frequency == 2) {
+								options += '-<input type="text" id='
+										+ msg.list[i].id + ' value='
+										+ msg.list[i].number
+										+ ' placeholder="填报数量" />';
+							} else {
+								options += '<input type="hidden" id='
+										+ msg.list[i].id + ' value='
+										+ msg.list[i].number + ' />';
+							}
+							options += '</td></tr></table>';
+						}
+						$('#options').append(options);
+						// 行添加click事件.
+						$("tr")
+								.click(
+										function() {
+											if ($(this).children().hasClass(
+													"bgRed")) {// 如果有某个样式则表明，这一行已经被选中
+												$(this).children().first()
+														.children().attr(
+																"checked",
+																false);
+												$(this).children().removeClass(
+														"bgRed");
+											} else { // 如果没有被选中
+												$(this).children().first()
+														.children()
+														.attr("checked", true);
+												$(this).children().addClass(
+														"bgRed");
+											}
+										});
+						var str = ",";
+						$("input[name='checkbox']:checked")
+								.each(
+										function() {
+											// 如果没有某个样式则加上，否则去除
+											$(this).parent().parent()
+													.children().addClass(
+															"bgRed");// 添加选中样式
+											var ids = $(this).val();
+											var number = document
+													.getElementById(ids).value;
+											$(this).parent().parent()
+													.children().addClass(
+															"bgRed");// 添加选中样式
+											str += ids + "N" + number + ",";
+										});
+						$("#init").val(str);
+						// 增加全选样式
+						$("#checkAll").click(
+								function() {
+									if ($('#checkAll').attr('checked')) {
+										$("[name='checkbox']").prop("checked",
+												'true');// 全选
+										$("[name='checkbox']").each(
+												function() {
+													$(this).parent().parent()
+															.children()
+															.addClass("bgRed");// 添加选中样式
+												});
+									} else {
+										$("[name='checkbox']").removeAttr(
+												"checked");// 取消全选
+										$("[name='checkbox']").each(
+												function() {
+													$(this).parent().parent()
+															.children()
+															.removeClass(
+																	"bgRed");// 取消选中样式
+												});
+									}
+								});
+					} else {
+						alert(msg.message);
+					}
+				}
+			});
+});
+// 积分填报
+function add() {
+	var int = $("#init").val();
+	$("input[name='checkbox']:checked").each(
+			function() {
+				var id = $(this).val();
+				var number = $("#" + id).val();
+				if (int.indexOf("," + id + "N") > -1) {
+					// 每月一次替换数量参数
+					initNumb = int.substring(int.indexOf("," + id + "N") + 1);
+					initNum = initNumb.substring(initNumb.indexOf("N") + 1,
+							initNumb.indexOf(","));
+					int = int.replace("," + id + "N" + initNum, "," + id + "Y"
+							+ number);
+				} else {
+					int += id + "Y" + number + ",";
+				}
+			});
+	$.ajax({
+		type : "POST",
+		url : "../../MobileOptionsController/AddOptionRegistr.do",
+		data : {
+			"option" : int
+		},
+		success : function(data) {
+			msg = eval("(" + data + ")");
+			if (msg.success) {
+				alert(msg.message);
+				location.reload();
+			} else {
+				alert(msg.message);
+			}
+		}
+	});
+}

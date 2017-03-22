@@ -1,0 +1,51 @@
+body {
+	font-size: 15px;
+	font-family: "ºÚÌå", helvetica;
+	height: 100%;
+	background: url(../images/limages/op.gif);
+	margin:0;
+}
+.bgRed{
+	color: red;
+}
+.option {
+	width: 95%;
+	height: 50px;
+	border-radius: 4px;
+	background: #fff;
+	filter: alpha(opacity : 70);
+	opacity: 0.7;
+	font-size: 14px;
+	margin: 0 0 0 2.5%;
+	border: 1px solid #ccc;
+}
+input[type="checkbox"] {
+	background: rgba(45, 45, 45, .15);
+	border-radius: 5px;
+	width: 15px;
+	height: 15px;
+	text-align: left;
+}
+.button {
+	width: 75%;
+	height: 35px;
+	background: #f34541;
+	border: 1px solid #f34541;
+	text-align: center;
+	margin: 10% 0 0 0;
+	color: #fff;
+	font-family: "Microsoft YaHei";
+	font-size: 14px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.optionstext {
+	background: rgba(45, 45, 45, .15);
+	background-color:#fff;
+	border-radius: 5px;
+	width: 50px;
+	height: 15px;
+	font-size: 10px;
+	text-align: center;
+}
